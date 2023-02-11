@@ -1002,6 +1002,7 @@ func_title
 ## Check architecture
 if [ "${arch}" != "x86" ] \
 && [ "${arch}" != "i686" ] \
+&& [ "${arch}" != "aarch64" ] \
 && [ "${arch}" != "x86_64" ]; then
   echo -e " ${RED}[ERROR] Your architecture ${arch} is not supported!${RESET}\n\n"
   exit 1
