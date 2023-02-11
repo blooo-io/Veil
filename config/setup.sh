@@ -571,6 +571,20 @@ func_package_deps(){
         errors="${errors}\n${msg}"
         echo -e " ${RED}[ERROR] ${msg}${RESET}\n"
       fi
+    elif [ "${arch}" == "aarch64" ]; then
+      sudo apt-get -qq update
+      if [[ "$?" -ne "0" ]]; then
+        msg="Failed with apt-get update (4): $?"
+        errors="${errors}\n${msg}"
+        echo -e " ${RED}[ERROR] ${msg}${RESET}\n"
+      fi
+
+      sudo ${arg} apt-get -y -qq install wine wine64
+      if [[ "$?" -ne "0" ]]; then
+        msg="Failed with installing wine (3): $?"
+        errors="${errors}\n${msg}"
+        echo -e " ${RED}[ERROR] ${msg}${RESET}\n"
+      fi
     else
       ## Dead code. We really shouldn't end up here, but, you never know...
       echo -e "${RED}[ERROR]: Architecture ${arch} is not supported!\n${RESET}\n"
