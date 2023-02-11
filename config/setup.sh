@@ -695,6 +695,7 @@ func_package_deps(){
         || sudo -u "${trueuser}" WINEARCH=win32 WINEPREFIX="${winedir}" wine cmd.exe /c ipconfig >/dev/null
     ## x86
     elif [ "${arch}" == "x86" ] \
+    || [ "${arch}" == "aarch64" ] \
     || [ "${arch}" == "i686" ]; then
       sudo -u "${trueuser}" WINEPREFIX="${winedir}" wineboot -u
     fi
